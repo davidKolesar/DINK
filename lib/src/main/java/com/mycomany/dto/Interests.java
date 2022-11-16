@@ -1,0 +1,15 @@
+package com.mycomany.dto;
+
+public enum Interests {
+HIKING,
+SWIMMING,
+LIFTING,
+DRAWING,
+TRAVELING,
+GYM,
+THEATER,
+PHOTOGRAPHY,
+ART,
+COOKING,
+READING
+}
