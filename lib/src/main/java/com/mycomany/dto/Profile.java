@@ -8,10 +8,13 @@ import java.util.UUID;
 public class Profile {
 	String id = UUID.randomUUID().toString(); // or do we want SQL to create the id?
 	public String name;
-	// Coordinates coordinates gps tracking stuff;
+	// Coordinates coordinates GPS/tracking stuff;
 	private int distance;
+	private int preferredDistance;
+	private int height;
 	public LocalDate birthday;
 	private int age;
+	private StarSign starSign;
 	public String job;
 	public Gender gender;
 	public Gender genderSeeking;
@@ -39,6 +42,22 @@ public class Profile {
 		this.distance = distance;
 	}
 
+	public int getPreferredDistance() {
+		return preferredDistance;
+	}
+
+	public void setPreferredDistance(int distance) {
+		this.preferredDistance = distance;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
 	public LocalDate getBirthday() {
 		return birthday;
 	}
@@ -51,6 +70,14 @@ public class Profile {
 		return age;
 	}
 
+	public StarSign getStarSign() {
+		return starSign;
+	}
+
+	public void setStarSign(StarSign starSign) {
+		this.starSign = starSign;
+	}
+	
 	public void setAge(int age) {
 		this.age = age;
 	}
