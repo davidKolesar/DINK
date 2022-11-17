@@ -153,4 +153,14 @@ public class Profile {
 	public void setLiked(boolean isLiked) {
 		this.isLiked = isLiked;
 	}
+
+	public int getPreferredMaxAge() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getPreferredMinAge() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

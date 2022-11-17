@@ -37,9 +37,10 @@ public class DatingPoolService {
 		//within distance range 
 
 		//all within desired gender (should this be last?)
-		Stream<Profile> matchingProfiles = allEligibleProfiles.stream().filter(p -> p.gender == userProfile.genderSeeking);
+		Stream<Profile> genderMatchingProfiles = allEligibleProfiles.stream().filter(p -> p.gender == userProfile.genderSeeking);
 		
 		//within age range 
+		Stream<Profile> ageMatchingProfiles = genderMatchingProfiles.filter(p -> p.getAge() <= userProfile.getPreferredMaxAge() && p.getAge() >= userProfile.getPreferredMinAge());
 		
 
 		return allEligibleProfiles;
