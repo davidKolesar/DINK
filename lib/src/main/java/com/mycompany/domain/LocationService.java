@@ -10,12 +10,12 @@ import java.util.Map;
  */
 public class LocationService {
 	
-	private void addToLocationMap(String name, double lat, double lng, Map<String, List<Double>> locations) {
+	private void addToLocationMap(String name, double latitude, double longitude, Map<String, List<Double>> locations) {
 		List<Double> coordinates = new ArrayList<>();
 
-		coordinates.add(lat);
-		coordinates.add(lng);
+		coordinates.add(latitude);
+		coordinates.add(longitude);
 		locations.put(name, coordinates);
 	}	
-	
+
 }

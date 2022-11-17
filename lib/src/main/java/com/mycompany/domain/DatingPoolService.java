@@ -1,6 +1,11 @@
 package com.mycompany.domain;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
+
+import com.google.common.base.Optional;
+import com.mycomany.dto.Preferences;
+import com.mycomany.dto.Profile;
 
 /**
  * Service that determines which profiles to display to a user
@@ -25,7 +30,17 @@ public class DatingPoolService {
 	 *                            preferences
 	 * @return <ArrayList>
 	 */
-	public ArrayList determineWithinPreferences(ArrayList allEligibleProfiles) {
+	public ArrayList<Profile> determineWithinPreferences(Profile userProfile, ArrayList<Profile> allEligibleProfiles) {
+		
+		ArrayList<Preferences> userPreferences = userProfile.preferences;
+		
+		//within distance range 
+
+		//all within desired gender (should this be last?)
+		Stream<Profile> matchingProfiles = allEligibleProfiles.stream().filter(p -> p.gender == userProfile.genderSeeking);
+		
+		//within age range 
+		
 
 		return allEligibleProfiles;
 	}
