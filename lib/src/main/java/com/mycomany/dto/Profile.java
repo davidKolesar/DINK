@@ -13,6 +13,7 @@ public class Profile {
 	private int preferredDistance;
 	private int height;
 	public LocalDate birthday;
+	public int daysSinceLastActive;
 	private int age;
 	private StarSign starSign;
 	public String job;
@@ -23,7 +24,7 @@ public class Profile {
 	public String profileInfo;
 	public ArrayList<Preferences> preferences;
 	public ArrayList<Interests> interests;
-	public ArrayList<Boolean> swipes;
+	public ArrayList<String> swipes;
 	private boolean isLiked;
 
 	public String getName() {
@@ -163,4 +164,21 @@ public class Profile {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	public int getLastActive() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getPreferredLastActive() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getDaysSinceLastActive() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 }

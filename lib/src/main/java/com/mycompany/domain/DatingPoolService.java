@@ -1,9 +1,9 @@
 package com.mycompany.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
-import com.google.common.base.Optional;
 import com.mycomany.dto.Preferences;
 import com.mycomany.dto.Profile;
 
@@ -15,6 +15,7 @@ import com.mycomany.dto.Profile;
 public class DatingPoolService {
 
 	/**
+	 * Culls list of matches to those within distance preferences
 	 * @param allEligibleProfiles Determines all potential profiles within eligible
 	 *                            distance
 	 * @return <ArrayList>
@@ -26,24 +27,44 @@ public class DatingPoolService {
 	}
 
 	/**
+	 * Filters out available matches based on preferences
 	 * @param allEligibleProfiles Determines all potential profiles within user set
 	 *                            preferences
 	 * @return <ArrayList>
 	 */
-	public ArrayList<Profile> determineWithinPreferences(Profile userProfile, ArrayList<Profile> allEligibleProfiles) {
+	public List<Profile> determineWithinPreferences(Profile userProfile, ArrayList<Profile> allEligibleProfiles) {
 		
 		ArrayList<Preferences> userPreferences = userProfile.preferences;
 		
-		//within distance range 
-
+		//should we do this as one long stream? it would be if height, search, etc
+		
 		//all within desired gender (should this be last?)
 		Stream<Profile> genderMatchingProfiles = allEligibleProfiles.stream().filter(p -> p.gender == userProfile.genderSeeking);
 		
 		//within age range 
 		Stream<Profile> ageMatchingProfiles = genderMatchingProfiles.filter(p -> p.getAge() <= userProfile.getPreferredMaxAge() && p.getAge() >= userProfile.getPreferredMinAge());
 		
+		//within height 
+		Stream<Profile> heightMatchingProfiles = ageMatchingProfiles.filter(p -> p.getHeight() <= userProfile.getPreferredMaxAge() && p.getAge() >= userProfile.getPreferredMinAge());
 
-		return allEligibleProfiles;
+		//within days last active
+		Stream<Profile> lastActiveMatchingProfiles = heightMatchingProfiles.filter(p -> p.getDaysSinceLastActive() <= userProfile.getPreferredLastActive());
+		
+		return lastActiveMatchingProfiles.toList();
 	}
-
+	
+	/**
+	 * Presents user will all matches available within preferences filter
+	 * @param allEligibleProfiles Determines all potential profiles within user set
+	 *                            preferences
+	 * @return <ArrayList>
+	 */
+	public List<Profile> presentMatchQueue (Profile userProfile, ArrayList<Profile> allEligibleProfiles) {
+		
+		//does this even belong here
+		for(Profile profile : allEligibleProfiles) {
+			userProfile.swipes.add(allEligibleProfiles);
+		}
+	}
+	
 }
